@@ -1,0 +1,12 @@
+build:
+  base-paths:
+    - src  # Set the source folder path (default: src in the workspace root)
+  cmake-args:  # Common CMake arguments
+    - -DCMAKE_BUILD_TYPE=RelWithDebInfo  # Use a release build with debug info
+    - -DBUILD_TESTING=ON                # Enable tests
+    - -DCMAKE_EXPORT_COMPILE_COMMANDS=ON  # Generate compile_commands.json
+  packages-skip:  # Packages to skip building
+    - package_name_to_skip
+  parallel-workers: auto  # Automatically use the number of cores available
+test:
+  return-code-on-test-failure: true  # Fail if any test fails
