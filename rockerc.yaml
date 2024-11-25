@@ -5,13 +5,27 @@
 # - image: Specifies the base image to pass to rocker
 # - args: Lists additional features or tools to be added to the docker image
 
+# image: nvcr.io/nvidia/isaac-sim:4.2.0
+# image: nvidia/cuda:12.2.2-devel-ubuntu22.04
+# image: pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel
+
+# image: ros:humble
 image: ubuntu:22.04
+# dockerfile: Dockerfile
+# rmw: cyclonedds
 args:
-  - nvidia
-  - x11 
-  - user 
-  - pull 
+  # - nvidia
+  - roshumble
+  # - cuda
+  - x11
+  - user
+  - pull
   - deps
-  - git 
-  - lazygit
-  - pixi
+  - git
+  # - pixi
+  - ssh
+  - oyr-colcon
+  - privileged
+  - dev-helpers
+
+#env-file: env.txt
