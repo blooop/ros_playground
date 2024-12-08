@@ -15,6 +15,7 @@ args:
   - git 
   # - lazygit
   # - pixi
-  # - ros-humble
-  # - cwd
+  - ros-humble
+  # - oyr-colcon
+  - cwd
   - vcstool
