@@ -8,5 +8,14 @@ build:
   packages-skip:  # Packages to skip building
     - package_name_to_skip
   parallel-workers: auto  # Automatically use the number of cores available
+  symlink-install: true
 test:
   return-code-on-test-failure: true  # Fail if any test fails
+
+
+  # build-base: /workspaces/ros_ws/build
+  # install-base: ros_ws/install
+  # cmake-args:
+  #   - "-DCMAKE_BUILD_TYPE=Release"
+  # base-paths:
+  #   - "/workspaces"

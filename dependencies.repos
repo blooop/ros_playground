@@ -1,5 +1,9 @@
 repositories:
-  BehaviorTree.ROS2:
+  moveit2_tutorials:
     type: git
-    url: https://github.com/BehaviorTree/BehaviorTree.ROS2.git
-    version: humble
+    url: https://github.com/moveit/moveit2_tutorials.git
+    version: main 
+  moveit_task_constructor:
+    type: git
+    url: https://github.com/moveit/moveit_task_constructor.git
+    version: humble 
