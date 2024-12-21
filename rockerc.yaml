@@ -16,3 +16,4 @@ args:
   - cwd
   - ros-humble
   - vcstool
+  - neovim
