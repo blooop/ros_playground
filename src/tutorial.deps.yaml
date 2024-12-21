@@ -1,0 +1,6 @@
+apt_ros-tools: 
+  - ros-humble-rqt*
+
+apt: 
+  - ros-humble-turtlesim
+  

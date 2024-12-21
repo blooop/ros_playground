@@ -13,7 +13,7 @@ args:
   - pull 
   - deps
   - git 
-  - lazygit
-  - pixi
-  - ros-humble
   - cwd
+  - ros-humble
+  - vcstool
+  - neovim
