@@ -17,3 +17,5 @@ args:
   - pixi
   - ros-humble
   - cwd
+  - neovim
+
