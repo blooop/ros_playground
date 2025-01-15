@@ -1,0 +1,6 @@
+[submodule "src/moveit2_tutorials"]
+	path = src/moveit2_tutorials
+	url = https://github.com/moveit/moveit2_tutorials
+[submodule "docker/docker-ros"]
+	path = docker/docker-ros
+	url = https://github.com/blooop/docker-ros.git
