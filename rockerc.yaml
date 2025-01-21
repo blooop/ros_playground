@@ -5,15 +5,16 @@
 # - image: Specifies the base image to pass to rocker
 # - args: Lists additional features or tools to be added to the docker image
 
-image: ubuntu:22.04
+# image: ubuntu:22.04
+image: ros_playground:latest
 args:
-  - nvidia
+  # - nvidia
   - x11 
   - user 
-  - pull 
-  - deps
+  # - pull 
+  # - deps
   - git 
-  - ros-humble
-  - cwd
-  - neovim
+  # - ros-humble
+  # - cwd
+  # - neovim
 
