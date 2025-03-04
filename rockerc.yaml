@@ -15,4 +15,5 @@ args:
   - git 
   - ros-humble
   - cwd
+  - urdf-viz
 
