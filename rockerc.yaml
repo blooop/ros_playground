@@ -15,5 +15,4 @@ args:
   - git 
   - ros-humble
   - cwd
-  - neovim
 
