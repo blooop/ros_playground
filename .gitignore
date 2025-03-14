@@ -174,3 +174,4 @@ test_suite_analysis/metadata.json
 install/
 log/
 build/
+.qodo

@@ -1,31 +1,27 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "python_template",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"context": ".."
+	"name": "ROS humble",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	// "image": "mcr.microsoft.com/devcontainers/base:jammy"
+	"image": "osrf/ros:humble-desktop",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+  	"ghcr.io/blooop/devcontainer-features/user:latest": {},
+  	"ghcr.io/blooop/devcontainer-features/urdf-viz:latest": {}
 	},
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-python.python",
-				"ms-python.vscode-pylance",
-				"ms-python.pylint",
-				"ms-python.black-formatter",
-				"njpwerner.autodocstring",
-				"charliermarsh.ruff",
-				"mhutchie.git-graph",
-				"eamodio.gitlens",
-				"tamasfe.even-better-toml",
-				"Codium.codium",
-				"ms-azuretools.vscode-docker",
-				"ryanluker.vscode-coverage-gutters"
-			]
-		}
-	},
-	//docker in docker is included in the pixi devcontainer example, but disabling for the moment due to security issues
-	// "features": {
-    //   "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-    // },
-    "mounts": ["source=${localWorkspaceFolderBasename}-pixi,target=${containerWorkspaceFolder}/.pixi,type=volume"],
-    "postCreateCommand": "sudo chown vscode .pixi && pixi install"
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "pip3 install --user -r requirements.txt",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
 }
