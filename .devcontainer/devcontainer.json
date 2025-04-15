@@ -1,11 +1,52 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "ROS humble",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	// "image": "mcr.microsoft.com/devcontainers/base:jammy"
+	"name": "${localWorkspaceFolderBasename}",
+	// "build": {
+	// 	"context": "${localWorkspaceFolder}",
+	// 	"dockerfile": "${localWorkspaceFolder}/Dockerfile",
+	// 	"cacheFrom": "andrejorsula/isaac_sim_rs"
+	// },
 	"image": "osrf/ros:humble-desktop",
-	// Features to add to the dev container. More info: https://containers.dev/features.
+	"workspaceFolder": "/root/ws",
+	"workspaceMount": "type=bind,source=${localWorkspaceFolder},target=/root/ws",
+	"runArgs": [
+		// Network mode
+		"--network=host",
+		"--ipc=host",
+		// NVIDIA GPU
+		"--gpus=all",
+		// Other GPUs
+		"--device=/dev/dri:/dev/dri",
+		"--group-add=video"
+	],
+	"mounts": [
+		// Local time
+		"type=bind,source=/etc/localtime,target=/etc/localtime,readonly",
+		// Input devices
+		"type=bind,source=/dev/input,target=/dev/input",
+		// GUI (X11)
+		"type=bind,source=/tmp/.X11-unix,target=/tmp/.X11-unix",
+		"type=bind,source=${localEnv:TMPDIR:/tmp}/xauth_docker_vsc_${localWorkspaceFolderBasename},target=${localEnv:TMPDIR:/tmp}/xauth_docker_vsc_${localWorkspaceFolderBasename}",
+		// Isaac Sim
+		"type=bind,source=${localEnv:HOME}/.nvidia-omniverse/docker/cache/computecache,target=/root/.nv/ComputeCache",
+		"type=bind,source=${localEnv:HOME}/.nvidia-omniverse/docker/cache/glcache,target=/root/.cache/nvidia/GLCache",
+		"type=bind,source=${localEnv:HOME}/.nvidia-omniverse/docker/cache/kit,target=/root/isaac_sim/cache/Kit",
+		"type=bind,source=${localEnv:HOME}/.nvidia-omniverse/docker/cache/ov,target=/root/.cache/ov",
+		"type=bind,source=${localEnv:HOME}/.nvidia-omniverse/docker/cache/pip,target=/root/.cache/pip",
+		"type=bind,source=${localEnv:HOME}/.nvidia-omniverse/docker/data,target=/root/.local/share/ov/data",
+		"type=bind,source=${localEnv:HOME}/.nvidia-omniverse/docker/documents,target=/root/Documents",
+		"type=bind,source=${localEnv:HOME}/.nvidia-omniverse/docker/logs,target=/root/.nvidia-omniverse/logs"
+	],
+	"containerEnv": {
+		// GUI (X11)
+		"DISPLAY": "${localEnv:DISPLAY}",
+		"XAUTHORITY": "${localEnv:TMPDIR:/tmp}/xauth_docker_vsc_${localWorkspaceFolderBasename}",
+		// NVIDIA GPU
+		"NVIDIA_VISIBLE_DEVICES": "all",
+		"NVIDIA_DRIVER_CAPABILITIES": "all"
+	},
+	"initializeCommand": "XAUTH=\"${localEnv:TMPDIR:/tmp}/xauth_docker_vsc_${localWorkspaceFolderBasename}\"; touch \"${XAUTH}\"; chmod a+r \"${XAUTH}\"; XAUTH_LIST=$(xauth nlist \"${localEnv:DISPLAY}\"); if [ -n \"${XAUTH_LIST}\" ]; then echo \"${XAUTH_LIST}\" | sed -e 's/^..../ffff/' | xauth -f \"${XAUTH}\" nmerge -; fi",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:latest": {},
 		"ghcr.io/devcontainers/features/git-lfs:1": {},
@@ -13,7 +54,7 @@
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
 		"ghcr.io/blooop/devcontainer-features/user:latest": {},
 		"ghcr.io/blooop/devcontainer-features/urdf-viz:latest": {},
-		// "ghcr.io/blooop/devcontainer-features/isaac_sim:1": {}
+		"ghcr.io/blooop/devcontainer-features/isaac_sim:1": {}
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
