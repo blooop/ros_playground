@@ -34,13 +34,13 @@ python_template = { path = ".", editable = true }
 
 [project.optional-dependencies]
 test = [
-  "pylint>=3.2.5,<=3.3.8",
-  "pytest-cov>=4.1,<=6.2.1",
-  "pytest>=7.4,<=8.4.1",
-  "hypothesis>=6.104.2,<=6.138.13",
-  "ruff>=0.5.0,<=0.12.11",
-  "coverage>=7.5.4,<=7.10.6",
-  "pre-commit<=4.3.0"
+  "pylint>=3.2.5,<=4.0.5",
+  "pytest-cov>=4.1,<=7.0.0",
+  "pytest>=7.4,<=9.0.2",
+  "hypothesis>=6.104.2,<=6.151.9",
+  "ruff>=0.5.0,<=0.15.4",
+  "coverage>=7.5.4,<=7.13.4",
+  "pre-commit<=4.5.1"
 ]
 
 [build-system]
